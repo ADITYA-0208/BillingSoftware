@@ -2,6 +2,8 @@
 body, html {
     height: 100%;
     overflow-y: hidden;
+    background: linear-gradient(135deg, #1f1c2c, #2d2a4a); /* NEW DARK PURPLE/BLUE BLEND */
+
 }
 
 .dashboard-wrapper {
@@ -12,7 +14,7 @@ body, html {
 }
 .dashboard-container {
     padding: 20px;
-    background-color: #212529;
+    background: radial-gradient(circle at top left, #202334, #1f1d2b); /* NEW DARK NEUTRAL */
     min-height: 100vh;
     color: #e9ecef;
 }

@@ -25,6 +25,8 @@ import org.springframework.web.filter.CorsFilter;
 
 import java.util.List;
 
+import javax.swing.Spring;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -52,6 +54,15 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+                    //     1. corsFilter()
+                    // 👮 Guard 1: "Where are you coming from?"
+
+                    // This guard checks CORS (Cross-Origin Resource Sharing), meaning:
+
+                    // "Are you coming from an allowed place like http://localhost:5173?"
+                    // If yes: "Okay, I trust you. Come in."
+
+                    // This helps your frontend (like React) talk to your backend (Spring Boot).
     @Bean
     public CorsFilter corsFilter() {
         return new CorsFilter(corsConfigurationSource());
