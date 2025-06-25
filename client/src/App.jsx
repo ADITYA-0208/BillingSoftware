@@ -12,7 +12,17 @@ import {useContext} from "react";
 import {AppContext} from "./context/AppContext.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
+import { useEffect } from "react";
+import axios from "axios";
+
+
 const App = () => {
+    useEffect(() => {
+        axios.get("https://billingsoftware-aj5t.onrender.com/api/test")
+            .then(res => console.log("✅ Backend Response:", res.data))
+            .catch(err => console.error("❌ Backend Connection Error:", err));
+    }, []);
+
     const location = useLocation();
     const {auth} = useContext(AppContext);
 
