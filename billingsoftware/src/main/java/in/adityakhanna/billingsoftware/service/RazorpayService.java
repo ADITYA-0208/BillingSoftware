@@ -1,9 +1,9 @@
-package in.adityakhanna.billingsoftware.service;
+// package in.adityakhanna.billingsoftware.service;
 
-import com.razorpay.RazorpayException;
-import in.adityakhanna.billingsoftware.io.RazorpayOrderResponse;
+// import com.razorpay.RazorpayException;
+// import in.adityakhanna.billingsoftware.io.RazorpayOrderResponse;
 
-public interface RazorpayService {
+// public interface RazorpayService {
 
-    RazorpayOrderResponse createOrder(Double amount, String currency) throws RazorpayException;
-}
+//     RazorpayOrderResponse createOrder(Double amount, String currency) throws RazorpayException;
+// }
