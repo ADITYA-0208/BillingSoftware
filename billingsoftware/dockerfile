@@ -1,14 +1,16 @@
-# Use Java base image
-FROM eclipse-temurin:17-jdk-alpine
+# 1. Use Java with Maven
+FROM maven:3.9.4-eclipse-temurin-17-alpine AS build
 
-# Set working directory
+# 2. Set workdir & copy project
 WORKDIR /app
+COPY . .
 
-# Copy your actual JAR file
-COPY target/billingsoftware-0.0.1-SNAPSHOT.jar app.jar
+# 3. Build project
+RUN mvn clean package -DskipTests
 
-# Expose port (Render will route to this)
+# 4. Run JAR
+FROM eclipse-temurin:17-jdk-alpine
+WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Run the app
 CMD ["java", "-jar", "app.jar"]
