@@ -40,25 +40,21 @@ const App = () => {
             {location.pathname !== "/login" && location.pathname !== '/' && <Menubar />}
             <Toaster />
             <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/explore" element={<Explore />} />
-                {/*Admin only routes*/}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/explore" element={<Explore />} />
 
+            <Route path="/category"  element={<ManageCategory />} />
+            <Route path="/users"  element={<ManageUsers />} />
+            <Route path="/items"  element={<ManageItems />} />
+            <Route path="/login" element={<LoginRoute element={<Login />} />} />
+            <Route path="/orders" element={<OrderHistory />} />
 
-                
-                {/* <Route path="/category" element={<ProtectedRoute element={<ManageCategory />} allowedRoles={['ROLE_ADMIN']} />} />
-                <Route path="/users" element={<ProtectedRoute element={<ManageUsers />} allowedRoles={["ROLE_ADMIN"]} />} />
-                <Route path="/items" element={<ProtectedRoute element={<ManageItems />} allowedRoles={["ROLE_ADMIN"]} /> } /> */}
+            {/* 👇 default route goes to dashboard now */}
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-                <Route path="/category"  element={<ManageCategory />} />
-                <Route path="/users"  element={<ManageUsers />}  />
-                <Route path="/items"  element={<ManageItems />}  />
-                <Route path="/login" element={<LoginRoute element={<Login />} />} />
-                <Route path="/orders" element={<OrderHistory />} />
-                <Route path="/" element={<Login />} />
-                <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
+        </Routes>
 
-            </Routes>
         </div>
     );
 }
