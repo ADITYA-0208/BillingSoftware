@@ -1,0 +1,14 @@
+# Use Java base image
+FROM eclipse-temurin:17-jdk-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy your actual JAR file
+COPY target/billingsoftware-0.0.1-SNAPSHOT.jar app.jar
+
+# Expose port (Render will route to this)
+EXPOSE 8080
+
+# Run the app
+CMD ["java", "-jar", "app.jar"]
