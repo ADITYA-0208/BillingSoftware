@@ -56,8 +56,8 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of(
             "http://localhost:5173",
-            "https://billing-software-o1el.vercel.app"  // ✅ ADD your deployed frontend URL here
-        ));
+            "https://billing-software-o1el-adityas-projects-75293732.vercel.app" 
+            ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowCredentials(true);
