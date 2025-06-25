@@ -12,17 +12,7 @@ import {useContext} from "react";
 import {AppContext} from "./context/AppContext.jsx";
 import NotFound from "./pages/NotFound/NotFound.jsx";
 
-import { useEffect } from "react";
-import axios from "axios";
-
-
 const App = () => {
-    useEffect(() => {
-        axios.get("https://billingsoftware-aj5t.onrender.com/api/test")
-            .then(res => console.log("✅ Backend Response:", res.data))
-            .catch(err => console.error("❌ Backend Connection Error:", err));
-    }, []);
-
     const location = useLocation();
     const {auth} = useContext(AppContext);
 
@@ -50,21 +40,25 @@ const App = () => {
             {location.pathname !== "/login" && location.pathname !== '/' && <Menubar />}
             <Toaster />
             <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/explore" element={<Explore />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/explore" element={<Explore />} />
+                {/*Admin only routes*/}
 
-            <Route path="/category"  element={<ManageCategory />} />
-            <Route path="/users"  element={<ManageUsers />} />
-            <Route path="/items"  element={<ManageItems />} />
-            <Route path="/login" element={<LoginRoute element={<Login />} />} />
-            <Route path="/orders" element={<OrderHistory />} />
 
-            {/* 👇 default route goes to dashboard now */}
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                
+                {/* <Route path="/category" element={<ProtectedRoute element={<ManageCategory />} allowedRoles={['ROLE_ADMIN']} />} />
+                <Route path="/users" element={<ProtectedRoute element={<ManageUsers />} allowedRoles={["ROLE_ADMIN"]} />} />
+                <Route path="/items" element={<ProtectedRoute element={<ManageItems />} allowedRoles={["ROLE_ADMIN"]} /> } /> */}
 
-            <Route path="*" element={<NotFound />} />
-        </Routes>
+                <Route path="/category"  element={<ManageCategory />} />
+                <Route path="/users"  element={<ManageUsers />}  />
+                <Route path="/items"  element={<ManageItems />}  />
+                <Route path="/login" element={<LoginRoute element={<Login />} />} />
+                <Route path="/orders" element={<OrderHistory />} />
+                <Route path="/" element={<Login />} />
+                <Route path="*" element={<NotFound />} />
 
+            </Routes>
         </div>
     );
 }
