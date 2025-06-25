@@ -22,12 +22,19 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+   
     private String orderId;
+   
     private String customerName;
+   
     private String phoneNumber;
+    
     private Double subtotal;
+    
     private Double tax;
+    
     private Double grandTotal;
+    
     private LocalDateTime createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
