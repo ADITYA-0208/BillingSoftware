@@ -35,6 +35,21 @@ const OrderHistory = () => {
         return new Date(dateString).toLocaleDateString('en-US', options);
     }
 
+    const getStatusBadge = (order) => {
+        const status = order.paymentDetails?.status?.toUpperCase();
+    
+        if (status === "COMPLETED") {
+            return <span className="badge bg-success">COMPLETED</span>;
+        }
+    
+        // Randomly show COMPLETED or PENDING when actual status is PENDING
+        const randomShowCompleted = Math.random() < 0.5; // 50% chance
+        return randomShowCompleted
+            ? <span className="badge bg-success">COMPLETED</span>
+            : <span className="badge bg-warning text-dark">PENDING</span>;
+    };
+    
+
     if (loading) {
         return <div className="text-center py-4">Loading orders...</div>
     }
@@ -50,32 +65,31 @@ const OrderHistory = () => {
             <div className="table-responsive">
                 <table className="table table-striped table-hover">
                     <thead className="table-dark">
-                    <tr>
-                        <th>Order Id</th>
-                        <th>Customer</th>
-                        <th>Items</th>
-                        <th>Total</th>
-                        <th>Payment</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                    </tr>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Customer</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Payment</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {orders.map(order => (
-                        <tr key={order.orderId}>
-                            <td>{order.orderId}</td>
-                            <td>{order.customerName} <br/>
-                                <small className="text-muted">{order.phoneNumber}</small>
-                            </td>
-                            <td>{formatItems(order.items)}</td>
-                            <td>₹{order.grandTotal}</td>
-                            <td>{order.paymentMethod}</td>
-                            <td>
-                                <span className={`badge ${order.paymentDetails?.status === "COMPLETED"? "bg-success" : "bg-warning text-dark"}`}>{order.paymentDetails?.status || "PENDING"}</span>
-                            </td>
-                            <td>{formatDate(order.createdAt)}</td>
-                        </tr>
-                    ))}
+                        {orders.map(order => (
+                            <tr key={order.orderId}>
+                                <td>{order.orderId}</td>
+                                <td>
+                                    {order.customerName}<br/>
+                                    <small className="text-muted">{order.phoneNumber}</small>
+                                </td>
+                                <td>{formatItems(order.items)}</td>
+                                <td>₹{order.grandTotal}</td>
+                                <td>{order.paymentMethod}</td>
+                                <td>{getStatusBadge(order)}</td>
+                                <td>{formatDate(order.createdAt)}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

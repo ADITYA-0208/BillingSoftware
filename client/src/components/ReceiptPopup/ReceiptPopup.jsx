@@ -1,7 +1,7 @@
 import './ReceiptPopup.css';
 import './Print.css';
 
-const ReceiptPopup = ({orderDetails, onClose, onPrint}) => {
+const ReceiptPopup = ({ orderDetails, onClose, onPrint }) => {
     return (
         <div className="receipt-popup-overlay text-dark">
             <div className="receipt-popup">
@@ -30,45 +30,38 @@ const ReceiptPopup = ({orderDetails, onClose, onPrint}) => {
                 </div>
                 <hr className="my-3" />
                 <div className="d-flex justify-content-between mb-2">
-                    <span>
-                        <strong>Subtotal:</strong>
-                    </span>
+                    <span><strong>Subtotal:</strong></span>
                     <span>₹{orderDetails.subtotal.toFixed(2)}</span>
                 </div>
                 <div className="d-flex justify-content-between mb-2">
-                    <span>
-                        <strong>Tax (1%):</strong>
-                    </span>
+                    <span><strong>Tax (1%):</strong></span>
                     <span>₹{orderDetails.tax.toFixed(2)}</span>
                 </div>
                 <div className="d-flex justify-content-between mb-4">
-                    <span>
-                        <strong>Grand Total:</strong>
-                    </span>
+                    <span><strong>Grand Total:</strong></span>
                     <span>₹{orderDetails.grandTotal.toFixed(2)}</span>
                 </div>
                 <p>
-                    <strong>Payment Method: </strong> {orderDetails.paymentMethod}
+                    <strong>Payment Method:</strong> {orderDetails.paymentMethod}
                 </p>
+
                 {
-                    orderDetails.paymentMethod === "UPI" && (
+                    orderDetails.paymentMethod === "UPI" && orderDetails.paymentDetails?.stripePaymentIntentId && (
                         <>
                             <p>
-                                <strong>Razorpay Order ID: </strong> {orderDetails.razorpayOrderId}
-                            </p>
-                            <p>
-                                <strong>Razorpay Payment ID: </strong> {orderDetails.razorpayPaymentId}
+                                <strong>Stripe PaymentIntent ID:</strong> {orderDetails.paymentDetails.stripePaymentIntentId}
                             </p>
                         </>
                     )
                 }
+
                 <div className="d-flex justify-content-end gap-3 mt-4">
                     <button className="btn btn-warning" onClick={onPrint}>Print Receipt</button>
                     <button className="btn btn-danger" onClick={onClose}>Close</button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ReceiptPopup;

@@ -42,6 +42,16 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>24.10.0</version>
+		</dependency>
+		<dependency>
+  <groupId>com.stripe</groupId>
+  <artifactId>stripe-java</artifactId>
+  <version>24.18.0</version> <!-- ✅ Use latest available -->
+</dependency>
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
