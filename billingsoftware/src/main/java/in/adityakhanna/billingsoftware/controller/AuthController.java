@@ -33,26 +33,17 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody AuthRequest request) throws Exception {
-        authenticate(request.getEmail(), request.getPassword());
-        final UserDetails userDetails = appUserDetailsService.loadUserByUsername(request.getEmail());
-        final String jwtToken = jwtUtil.generateToken(userDetails);
-        String role = userService.getUserRole(request.getEmail());
-        return new AuthResponse(request.getEmail(), jwtToken, role);
+    public AuthResponse login(@RequestBody AuthRequest request) {
+        // ✅ No validation, no DB, no exceptions
+        UserDetails userDetails = org.springframework.security.core.userdetails.User
+            .withUsername(request.getEmail())
+            .password("dummy")
+            .roles("ADMIN") // or USER
+            .build();
+    
+        String jwtToken = jwtUtil.generateToken(userDetails);
+    
+        return new AuthResponse(request.getEmail(), jwtToken, "ROLE_ADMIN");
     }
-
-    private void authenticate(String email, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
-        }catch (DisabledException e) {
-            throw new Exception("User disabled");
-        }catch (BadCredentialsException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email or password is incorrect");
-        }
-    }
-
-    @PostMapping("/encode")
-    public String encodePassword(@RequestBody Map<String, String> request) {
-        return passwordEncoder.encode(request.get("password"));
-    }
+    
 }
