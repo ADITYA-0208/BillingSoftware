@@ -40,14 +40,19 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserEntity convertToEntity(UserRequest request) {
+        String role = (request.getRole() == null || request.getRole().isBlank())
+                ? "USER"   // default role
+                : request.getRole().toUpperCase();
+    
         return UserEntity.builder()
                 .userId(UUID.randomUUID().toString())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole().toUpperCase())
+                .role(role)
                 .name(request.getName())
                 .build();
     }
+    
 
     @Override
     public String getUserRole(String email) {
