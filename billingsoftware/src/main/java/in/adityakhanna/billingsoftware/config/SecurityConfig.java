@@ -54,11 +54,8 @@ public class SecurityConfig {
     @Bean
 public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration config = new CorsConfiguration();
-    config.setAllowedOrigins(List.of(
+    config.setAllowedOriginPatterns(List.of(
         "http://localhost:5173",
-        "https://billing-software-o1el-adityas-projects-75293732.vercel.app",
-        "https://billing-software-k9mm.vercel.app" ,
-        "https://billing-software-k9mm-7e5okmesq-adityas-projects-75293732.vercel.app" ,
         "https://*.vercel.app"
 
     ));
