@@ -102,30 +102,31 @@ cd client
 npm install
 npm run dev
 
+
+
 ### 🧾 Login Page
-![Login](login.png)
+![Login](assets/login.png)
 
 ### 📊 Dashboard
-![Dashboard](dashboard.png)
+![Dashboard](assets/dashboard.png)
 
 ### 🛍️ Explore Page
-![Explore](explore.png)
+![Explore](assets/explore.png)
 
 ### 📂 Manage Categories
-![Manage Category](managaecategoty.png)
+![Manage Category](assets/managaecategoty.png)
 
 ### 📦 Manage Items
-![Manage Item](manageitem.png)
+![Manage Item](assets/manageitem.png)
 
 ### 👥 Manage Users
-![Manage Users](manageuser.png)
+![Manage Users](assets/manageuser.png)
 
 ### 🧾 Orders
-![Orders](order.png)
+![Orders](assets/order.png)
 
 ### 💳 Stripe Payment Integration
-![Stripe](stripe)
-
+![Stripe](assets/stripe)
 
 
 
