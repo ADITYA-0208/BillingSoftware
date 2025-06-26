@@ -56,7 +56,7 @@ const Login = () => {
                                 <label htmlFor="email" className="form-label text-muted">
                                     Email address (try: aditya@example.com)
                                 </label>
-                                <input type="text" name="email" id="email" placeholder="Try: aditya@example.com" className="form-control" onChange={onChangeHandler} value={data.email} />
+                                <input type="text" name="email" id="email" placeholder="aditya@example.com" className="form-control" onChange={onChangeHandler} value={data.email} />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="password" className="form-label text-muted">
