@@ -54,13 +54,13 @@ const Login = () => {
                         <form onSubmit={onSubmitHandler}>
                             <div className="mb-4">
                                 <label htmlFor="email" className="form-label text-muted">
-                                    Email address
+                                    Email address (try: aditya@example.com)
                                 </label>
                                 <input type="text" name="email" id="email" placeholder="Try: aditya@example.com" className="form-control" onChange={onChangeHandler} value={data.email} />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="password" className="form-label text-muted">
-                                    Password (try: hutttt)
+                                    Password (try: adityakhanna)
                                 </label>
                                 <input type="password" name="password" id="password" placeholder="**********" className="form-control" onChange={onChangeHandler} value={data.password} />
                             </div>
