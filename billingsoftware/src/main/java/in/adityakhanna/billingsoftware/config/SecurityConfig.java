@@ -58,7 +58,9 @@ public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSou
         "http://localhost:5173",
         "https://billing-software-o1el-adityas-projects-75293732.vercel.app",
         "https://billing-software-k9mm.vercel.app" ,
-        "https://billing-software-k9mm-7e5okmesq-adityas-projects-75293732.vercel.app" 
+        "https://billing-software-k9mm-7e5okmesq-adityas-projects-75293732.vercel.app" ,
+        "https://*.vercel.app"
+
     ));
     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
     config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
