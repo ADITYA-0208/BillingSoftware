@@ -41,19 +41,19 @@ file uploads to AWS S3, and payments handled by Stripe.
 
 ## 🏗️ Project Structure
 
+##CONTROLLER
+src/main/in/adityakhanna/billingsoftware/controller
+##SERVICE
+src/main/in/adityakhanna/billingsoftware/service
+##ENTITY
+src/main/in/adityakhanna/billingsoftware/entity
+##REPOSITORY
+src/main/in/adityakhanna/billingsoftware/repository
+##SECURITY
+src/main/in/adityakhanna/billingsoftware/security
+##CONFIG
+src/main/in/adityakhanna/billingsoftware/config
 
-src/
-├── main/
-│ ├── java/in/adityakhanna/billingsoftware/
-│ │ ├── controller/
-│ │ ├── service/
-│ │ ├── entity/
-│ │ ├── repository/
-│ │ ├── security/
-│ │ └── config/
-│ └── resources/
-│ ├── application.properties
-├── frontend/ (React App)
 
 
 STEPS TO RUN THIS APPLICATION
