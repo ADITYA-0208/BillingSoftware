@@ -123,7 +123,7 @@ npm run dev
 ![Manage Users](assets/manageuser.png)
 
 ### 🧾 Orders
-![Orders](assets/order.png)
+![Orders](assets/order1.png)
 
 ### 💳 Stripe Payment Integration
 ![Stripe](assets/stripe)
