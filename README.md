@@ -125,8 +125,5 @@ npm run dev
 ### 🧾 Orders
 ![Orders](assets/order1.png)
 
-### 💳 Stripe Payment Integration
-![Stripe](assets/stripe)
-
 
 
