@@ -37,7 +37,7 @@ const App = () => {
 
     return (
         <div>
-            {location.pathname !== "/login" && location.pathname !== '/' && <Menubar />}
+            {location.pathname !== "/login" && <Menubar />}
             <Toaster />
             <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
@@ -53,9 +53,9 @@ const App = () => {
                 <Route path="/category"  element={<ManageCategory />} />
                 <Route path="/users"  element={<ManageUsers />}  />
                 <Route path="/items"  element={<ManageItems />}  />
-                <Route path="/login" element={<LoginRoute element={<Login />} />} />
+                <Route path="/login" element={<LoginRoute element={<Dashboard />} />} />
                 <Route path="/orders" element={<OrderHistory />} />
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="*" element={<NotFound />} />
 
             </Routes>
